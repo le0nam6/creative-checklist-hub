@@ -6,6 +6,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
+import { ReviewSummary } from './ReviewSummary';
 
 interface ReviewChecklistProps {
   type: ReviewType;
@@ -38,6 +39,7 @@ export const ReviewChecklist = ({ type, taskId }: ReviewChecklistProps) => {
   );
 
   const [submitting, setSubmitting] = useState(false);
+  const [showSummary, setShowSummary] = useState(false);
 
   const handleStatusChange = (itemId: string, status: ChecklistItem['status']) => {
     setItems(items.map(item => 
@@ -57,6 +59,7 @@ export const ReviewChecklist = ({ type, taskId }: ReviewChecklistProps) => {
       // Here you would typically send the review data to your backend
       await new Promise(resolve => setTimeout(resolve, 1000)); // Simulated API call
       toast.success('Revisão salva com sucesso!');
+      setShowSummary(true);
     } catch (error) {
       toast.error('Erro ao salvar a revisão');
     } finally {
@@ -114,6 +117,12 @@ export const ReviewChecklist = ({ type, taskId }: ReviewChecklistProps) => {
           {submitting ? 'Salvando...' : 'Salvar Revisão'}
         </Button>
       </div>
+
+      <ReviewSummary
+        items={items}
+        isOpen={showSummary}
+        onClose={() => setShowSummary(false)}
+      />
     </div>
   );
 };
