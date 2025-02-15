@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { TaskTable } from '@/components/TaskTable';
 import { TaskReviewCard } from '@/components/TaskReviewCard';
 import { Task } from '@/types';
-import { Dialog, DialogContent } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 
 // Mock data for demonstration
 const MOCK_TASKS: Task[] = [
@@ -61,6 +61,12 @@ const Index = () => {
 
         <Dialog open={!!selectedTask} onOpenChange={() => setSelectedTask(null)}>
           <DialogContent className="max-w-4xl">
+            <DialogHeader>
+              <DialogTitle>Revisão de Tarefa</DialogTitle>
+              <DialogDescription>
+                Revise os detalhes e forneça feedback para esta entrega
+              </DialogDescription>
+            </DialogHeader>
             {selectedTask && (
               <TaskReviewCard
                 task={selectedTask}
