@@ -60,8 +60,8 @@ const Index = () => {
         />
 
         <Dialog open={!!selectedTask} onOpenChange={() => setSelectedTask(null)}>
-          <DialogContent className="max-w-4xl">
-            <DialogHeader>
+          <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
+            <DialogHeader className="sticky top-0 bg-background z-10 pb-4">
               <DialogTitle>Revisão de Tarefa</DialogTitle>
               <DialogDescription>
                 Revise os detalhes e forneça feedback para esta entrega
