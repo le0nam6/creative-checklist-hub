@@ -1,5 +1,6 @@
 
 export type Status = 'pending' | 'complete' | 'review';
+export type ReviewStatus = 'pending' | 'completed';
 
 export type Task = {
   id: string;
@@ -12,6 +13,10 @@ export type Task = {
   designer?: string;
   createdAt: string;
   updatedAt: string;
+  copyReviewStatus?: ReviewStatus;
+  designReviewStatus?: ReviewStatus;
+  hasReviews?: boolean;
+  reviews?: ChecklistItem[];
 };
 
 export type ChecklistItem = {
